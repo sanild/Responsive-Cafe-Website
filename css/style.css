@@ -4,7 +4,7 @@
     --main-color:#000000;
     --black:#d3ad7f;
     --bg:#F9F4F0;
-    --border:.1rem solid rgba(255,255,255,.3);
+    /* --border:.1rem solid rgba(255,255,255,.3); */
     
 }
 
@@ -17,6 +17,7 @@
     text-transform: capitalize;
     transition: .2s linear;
 }
+
 
 html{
     font-size: 62.5%;
@@ -37,6 +38,48 @@ html::-webkit-scrollbar-thumb{
     background: #fff;
     border-radius: 5rem;
 }
+
+button {
+    font-size: 16px;
+    position: relative;
+    margin: auto;
+    padding: 1em 2.5em 1em 2.5em;
+    border: none;
+    background: #fff;
+    transition: all 0.1s linear;
+    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+   }
+   
+   button:active {
+    transform: scale(0.95);
+   }
+   
+   button span {
+    color: #464646;
+   }
+   
+   button .border {
+    position: absolute;
+    border: 0.15em solid #fff;
+    transition: all 0.3s 0.08s linear;
+    top: 50%;
+    left: 50%;
+    width: 9em;
+    height: 3em;
+    transform: translate(-50%, -50%);
+   }
+   
+   button:hover .border {
+    display: block;
+    width: 9.9em;
+    height: 3.7em;
+   }
+   
+   .full-rounded {
+    border-radius: 2em;
+   }
+
+
 
 body{
     background: var(--bg);
@@ -152,59 +195,6 @@ section{
     color:var(--main-color);
 }
 
-.header .cart-items-container{
-    position: absolute;
-    top:100%; right: -100%;
-    height: calc(100vh - 9.5rem);
-    width: 35rem;
-    background: #fff;
-    padding:0 1.5rem;
-}
-
-.header .cart-items-container.active{
-    right: 0;
-}
-
-.header .cart-items-container .cart-item{
-    position: relative;
-    margin:2rem 0;
-    display: flex;
-    align-items: center;
-    gap:1.5rem;
-}
-
-.header .cart-items-container .cart-item .fa-times{
-    position: absolute;
-    top:1rem; right: 1rem;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--black);
-}
-
-.header .cart-items-container .cart-item .fa-times:hover{
-    color:var(--main-color);
-}
-
-.header .cart-items-container .cart-item img{
-    height: 7rem;
-}
-
-.header .cart-items-container .cart-item .content h3{
-    font-size: 2rem;
-    color:var(--black);
-    padding-bottom: .5rem;
-}
-
-.header .cart-items-container .cart-item .content .price{
-    font-size: 1.5rem;
-    color:var(--main-color);
-}
-
-.header .cart-items-container .btn{
-    width: 100%;
-    text-align: center;
-}
-
 .home{
     min-height: 100vh;
     display: flex;
@@ -219,7 +209,8 @@ section{
 }
 
 .home .content h3{
-    font-size: 6rem;
+    font-size: 4rem;
+    background-color: rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     color:#fff;
 }
@@ -228,7 +219,9 @@ section{
     font-size: 2rem;
     font-weight: lighter;
     line-height: 1.8;
+    font-weight: 600;
     padding:1rem 0;
+    background-color: rgba(0, 0, 0, 0.5);
     color:#eee;
 }
 
@@ -236,6 +229,7 @@ section{
     display: flex;
     align-items: center;
     background:var(--black);
+    border-radius:10px;
     flex-wrap: wrap;
 }
 
@@ -245,6 +239,8 @@ section{
 
 .about .row .image img{
     width: 100%;
+    border-radius:10px;
+
 }
 .about .row .content{
     flex:1 1 45rem;
@@ -258,15 +254,60 @@ section{
 
 .about .row .content p{
     font-size: 1.6rem;
-    color:#ccc;
+    color:#000000;
     padding:1rem 0;
     line-height: 1.8;
 }
 
 .menu .box-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(4, minmax(21rem, 1fr));
     gap:1.5rem;
+    padding: 2rem;
+    background:var(--black);
+    border-radius:10px;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1089px){
+    .menu .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap:1.5rem;
+        justify-content: center;
+    }  
+}
+
+
+@media only screen and (min-width: 676px) and (max-width: 991px){
+    .menu .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+        gap:1.5rem;
+        justify-content: center;
+    }  
+}
+@media only screen and (min-width: 375px) and (max-width: 675px)
+
+{
+    .menu .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        gap:0rem;
+        justify-content: center;
+    } 
+
+    .menu .box-container .box{
+     height: 254px;
+     background: rgb(255, 255, 255);
+     border-radius: 5px;
+     border: 0px solid rgba(0, 0, 255, .2);
+     transition: all .2s;
+    }
+
+    .menu .box-container .box:hover {
+       }
+
 }
 
 .menu .box-container .box{
@@ -316,119 +357,34 @@ section{
     background-size: cover; /* or contain, depending on your preference */
   background-position: center center;
 }
-
-
-.products .box-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap:1.5rem;
+#box7{
+    background-image: url("../images/menu-7.jpg");
+    background-size: cover; /* or contain, depending on your preference */
+  background-position: center center;
 }
-
-.products .box-container .box{
-    text-align: center;
-    border:var(--border);
-    padding: 2rem;
-}
-
-.products .box-container .box .icons a{
-    height: 5rem;
-    width: 5rem;
-    line-height: 5rem;
-    font-size: 2rem;
-    border:var(--border);
-    color:#fff;
-    margin:.3rem;
-}
-
-.products .box-container .box .icons a:hover{
-    background:var(--main-color);
-}
-
-.products .box-container .box .image{
-    padding: 2.5rem 0;
-}
-
-.products .box-container .box .image img{
-    height: 25rem;
-}
-
-.products .box-container .box .content h3{
-    color:#fff;
-    font-size: 2.5rem;
-}
-
-.products .box-container .box .content .stars{
-    padding: 1.5rem;
-}
-
-.products .box-container .box .content .stars i{
-    font-size: 1.7rem;
-    color: var(--main-color);
-}
-
-.products .box-container .box .content .price{
-    color:#fff;
-    font-size: 2.5rem;
-}
-
-.products .box-container .box .content .price span{
-    text-decoration: line-through;
-    font-weight: lighter;
-    font-size: 1.5rem;
-}
-
-.review .box-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap:1.5rem;
-}
-
-.review .box-container .box{
-    border:var(--border);
-    text-align: center;
-    padding:3rem 2rem;
-}
-
-.review .box-container .box p{
-    font-size: 1.5rem;
-    line-height: 1.8;
-    color:#ccc;
-    padding:2rem 0;
-}
-
-.review .box-container .box .user{
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.review .box-container .box h3{
-    padding:1rem 0;
-    font-size: 2rem;
-    color:#fff;
-}
-
-.review .box-container .box .stars i{
-    font-size: 1.5rem;
-    color:var(--main-color);
+#box8{
+    background-image: url("../images/menu-8.jpg");
+    background-size: cover; /* or contain, depending on your preference */
+  background-position: center center;
 }
 
 .contact .row{
     display: flex;
     background:var(--black);
     flex-wrap: wrap;
+    padding: 2rem;
+    border-radius: 10px;
     gap:1rem;
 }
 
 .contact .row .map{
-    flex:1 1 45rem;
+    flex:1;
     width: 100%;
     object-fit: cover;
 }
 
 .contact .row form{
-    flex:1 1 45rem;
+    flex:1;
     padding:5rem 2rem;
     text-align: center;
 }
@@ -465,6 +421,9 @@ section{
 
 .blogs .box-container{
     display: grid;
+    border-radius:2rem;
+    padding:10px;
+    background-color: var(--black);
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:1.5rem;
 }
@@ -483,10 +442,12 @@ section{
     height: 100%;
     object-fit: cover;
     width: 100%;
+    border-radius: 1rem;
 }
 
 .blogs .box-container .box:hover .image img{
     transform: scale(1.2);
+    /* border-radius: 1rem; */
 }
 
 .blogs .box-container .box .content{
@@ -518,7 +479,7 @@ section{
 }
 
 .footer{
-    background:var(--black);
+    background: rgba(0,0,0,0.5);;
     text-align: center;
 }
 
@@ -541,21 +502,6 @@ section{
     background-color: var(--main-color);
 }
 
-.footer .links{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding:2rem 0;
-    gap:1rem;
-}
-
-.footer .links a{
-    padding:.7rem 2rem;
-    color:#fff;
-    border:var(--border);
-    font-size: 2rem;
-}
-
 .footer .links a:hover{
     background:var(--main-color);
 }
@@ -570,18 +516,6 @@ section{
 .footer .credit span{
     color:var(--main-color);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* media queries  */
 @media (max-width:991px){
